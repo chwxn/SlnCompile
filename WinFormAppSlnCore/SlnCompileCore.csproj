@@ -11,4 +11,8 @@
     <OutputPath>..\..\build</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="README.md" />
+  </ItemGroup>
+
 </Project>
