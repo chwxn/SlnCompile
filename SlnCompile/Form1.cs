@@ -113,7 +113,8 @@ namespace SlnCompile
             string dir = listBoxDirRepo.SelectedItem.ToString();
             if (!string.IsNullOrEmpty(dir))
             {
-                dir = dir.Replace("sln", "src");
+                if (dir.Substring(dir.Length - 3, 3).Equals("sln", StringComparison.OrdinalIgnoreCase))
+                    dir = dir.Replace("sln", "src");
                 Thread thread = new Thread(new ParameterizedThreadStart(Cmd));
                 thread.IsBackground = true;
                 thread.Start("0&explorer " + dir);
