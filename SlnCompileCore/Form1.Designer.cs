@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.buttonSelDir = new System.Windows.Forms.Button();
             this.listBoxSlnRepo = new System.Windows.Forms.ListBox();
@@ -39,9 +40,10 @@
             // 
             // buttonSelDir
             // 
-            this.buttonSelDir.Location = new System.Drawing.Point(504, 12);
+            this.buttonSelDir.Location = new System.Drawing.Point(588, 17);
+            this.buttonSelDir.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSelDir.Name = "buttonSelDir";
-            this.buttonSelDir.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelDir.Size = new System.Drawing.Size(88, 33);
             this.buttonSelDir.TabIndex = 1;
             this.buttonSelDir.Text = "选择";
             this.buttonSelDir.UseVisualStyleBackColor = true;
@@ -49,34 +51,38 @@
             // listBoxSlnRepo
             // 
             this.listBoxSlnRepo.FormattingEnabled = true;
-            this.listBoxSlnRepo.ItemHeight = 12;
-            this.listBoxSlnRepo.Location = new System.Drawing.Point(27, 81);
+            this.listBoxSlnRepo.ItemHeight = 17;
+            this.listBoxSlnRepo.Location = new System.Drawing.Point(31, 115);
+            this.listBoxSlnRepo.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxSlnRepo.Name = "listBoxSlnRepo";
-            this.listBoxSlnRepo.Size = new System.Drawing.Size(470, 292);
+            this.listBoxSlnRepo.Size = new System.Drawing.Size(548, 412);
             this.listBoxSlnRepo.TabIndex = 2;
             // 
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(27, 404);
+            this.labelInfo.Location = new System.Drawing.Point(31, 572);
+            this.labelInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(431, 12);
+            this.labelInfo.Size = new System.Drawing.Size(0, 17);
             this.labelInfo.TabIndex = 4;
             // 
             // listBoxDirRepo
             // 
             this.listBoxDirRepo.FormattingEnabled = true;
-            this.listBoxDirRepo.ItemHeight = 12;
-            this.listBoxDirRepo.Location = new System.Drawing.Point(27, 13);
+            this.listBoxDirRepo.ItemHeight = 17;
+            this.listBoxDirRepo.Location = new System.Drawing.Point(31, 18);
+            this.listBoxDirRepo.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxDirRepo.Name = "listBoxDirRepo";
-            this.listBoxDirRepo.Size = new System.Drawing.Size(470, 64);
+            this.listBoxDirRepo.Size = new System.Drawing.Size(548, 89);
             this.listBoxDirRepo.TabIndex = 5;
             // 
             // buttonExplorerDir
             // 
-            this.buttonExplorerDir.Location = new System.Drawing.Point(504, 41);
+            this.buttonExplorerDir.Location = new System.Drawing.Point(588, 58);
+            this.buttonExplorerDir.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExplorerDir.Name = "buttonExplorerDir";
-            this.buttonExplorerDir.Size = new System.Drawing.Size(75, 23);
+            this.buttonExplorerDir.Size = new System.Drawing.Size(88, 33);
             this.buttonExplorerDir.TabIndex = 6;
             this.buttonExplorerDir.Text = "浏览";
             this.buttonExplorerDir.UseVisualStyleBackColor = true;
@@ -84,16 +90,17 @@
             // comboBoxCommand
             // 
             this.comboBoxCommand.FormattingEnabled = true;
-            this.comboBoxCommand.Location = new System.Drawing.Point(27, 379);
+            this.comboBoxCommand.Location = new System.Drawing.Point(31, 537);
+            this.comboBoxCommand.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCommand.Name = "comboBoxCommand";
-            this.comboBoxCommand.Size = new System.Drawing.Size(470, 20);
+            this.comboBoxCommand.Size = new System.Drawing.Size(548, 25);
             this.comboBoxCommand.TabIndex = 7;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 442);
+            this.ClientSize = new System.Drawing.Size(692, 626);
             this.Controls.Add(this.comboBoxCommand);
             this.Controls.Add(this.buttonExplorerDir);
             this.Controls.Add(this.listBoxDirRepo);
@@ -101,6 +108,8 @@
             this.Controls.Add(this.listBoxSlnRepo);
             this.Controls.Add(this.buttonSelDir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form";

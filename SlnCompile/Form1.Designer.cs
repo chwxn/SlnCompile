@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.buttonSelDir = new System.Windows.Forms.Button();
             this.listBoxSlnRepo = new System.Windows.Forms.ListBox();
@@ -60,7 +61,7 @@
             this.labelInfo.AutoSize = true;
             this.labelInfo.Location = new System.Drawing.Point(27, 404);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(431, 12);
+            this.labelInfo.Size = new System.Drawing.Size(0, 12);
             this.labelInfo.TabIndex = 4;
             // 
             // listBoxDirRepo
@@ -101,6 +102,7 @@
             this.Controls.Add(this.listBoxSlnRepo);
             this.Controls.Add(this.buttonSelDir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form";
