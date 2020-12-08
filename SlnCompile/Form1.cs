@@ -89,6 +89,7 @@ namespace SlnCompile
         }
         private void buttonSelDir_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog1.SelectedPath = _baseDir;
             var dialogResult = folderBrowserDialog1.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
