@@ -72,6 +72,7 @@ namespace SlnCompileCore
                     listBoxDirRepo.DataSource = _slnDirRepo;
                     //listBoxDirRepo.SelectedIndex = 0;
                     loadSln(listBoxDirRepo.SelectedItem.ToString());
+                    listBoxSlnRepo.Focus();
                 }
             }
             //加载命令
@@ -173,7 +174,7 @@ namespace SlnCompileCore
             string dir = listBoxDirRepo.SelectedItem.ToString();
             labelInfo.Text = dir;
             loadSln(dir);
-
+            listBoxSlnRepo.Focus();
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
