@@ -158,6 +158,10 @@ namespace SlnCompileCore
                 {
                     extCommand = " && cpext \"" + dir + "\"";
                 }
+                else
+                {
+                    extCommand = " && cpext";
+                }
             }
             Thread thread = new Thread(new ParameterizedThreadStart(Cmd));
             thread.IsBackground = true;
