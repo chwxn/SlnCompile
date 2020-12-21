@@ -133,7 +133,7 @@ namespace SlnCompileCore
                     dir = dir.Replace("sln", "src");
                 Thread thread = new Thread(new ParameterizedThreadStart(Cmd));
                 thread.IsBackground = true;
-                thread.Start("0&explorer " + dir);
+                thread.Start("0&explorer \"" + dir + "\"");
             }
         }
         private void listBoxSlnRepo_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -143,7 +143,7 @@ namespace SlnCompileCore
             string path = listBoxSlnRepo.SelectedItem.ToString();
             //string str = textBoxCommand.Text;
             string str = comboBoxCommand.Text;
-            string command = string.Format(str, path);
+            string command = string.Format(str, "\"" + path + "\"");
             labelInfo.Text = command;
 
             if (_cmdPathRepo.IndexOf(str) < 0)
@@ -166,7 +166,7 @@ namespace SlnCompileCore
             }
             Thread thread = new Thread(new ParameterizedThreadStart(Cmd));
             thread.IsBackground = true;
-            thread.Start("1&" + command + extCommand + " && pause");
+            thread.Start("1&" + command + extCommand + " & pause");
         }
         private void listBoxDirRepo_SelectedIndexChanged(object sender, EventArgs e)
         {
