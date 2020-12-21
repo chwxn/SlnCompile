@@ -36,11 +36,15 @@
             this.listBoxDirRepo = new System.Windows.Forms.ListBox();
             this.buttonExplorerDir = new System.Windows.Forms.Button();
             this.comboBoxCommand = new System.Windows.Forms.ComboBox();
+            this.btnCompile = new System.Windows.Forms.Button();
+            this.btnCompileCopy = new System.Windows.Forms.Button();
+            this.txtDevDir = new System.Windows.Forms.TextBox();
+            this.btnDevSel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSelDir
             // 
-            this.buttonSelDir.Location = new System.Drawing.Point(588, 17);
+            this.buttonSelDir.Location = new System.Drawing.Point(588, 12);
             this.buttonSelDir.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSelDir.Name = "buttonSelDir";
             this.buttonSelDir.Size = new System.Drawing.Size(88, 33);
@@ -52,7 +56,7 @@
             // 
             this.listBoxSlnRepo.FormattingEnabled = true;
             this.listBoxSlnRepo.ItemHeight = 17;
-            this.listBoxSlnRepo.Location = new System.Drawing.Point(31, 115);
+            this.listBoxSlnRepo.Location = new System.Drawing.Point(31, 110);
             this.listBoxSlnRepo.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxSlnRepo.Name = "listBoxSlnRepo";
             this.listBoxSlnRepo.Size = new System.Drawing.Size(548, 412);
@@ -61,17 +65,18 @@
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(31, 572);
+            this.labelInfo.Location = new System.Drawing.Point(31, 595);
             this.labelInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(0, 17);
+            this.labelInfo.Size = new System.Drawing.Size(36, 17);
             this.labelInfo.TabIndex = 4;
+            this.labelInfo.Text = "label";
             // 
             // listBoxDirRepo
             // 
             this.listBoxDirRepo.FormattingEnabled = true;
             this.listBoxDirRepo.ItemHeight = 17;
-            this.listBoxDirRepo.Location = new System.Drawing.Point(31, 18);
+            this.listBoxDirRepo.Location = new System.Drawing.Point(31, 13);
             this.listBoxDirRepo.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxDirRepo.Name = "listBoxDirRepo";
             this.listBoxDirRepo.Size = new System.Drawing.Size(548, 89);
@@ -79,7 +84,7 @@
             // 
             // buttonExplorerDir
             // 
-            this.buttonExplorerDir.Location = new System.Drawing.Point(588, 58);
+            this.buttonExplorerDir.Location = new System.Drawing.Point(588, 53);
             this.buttonExplorerDir.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExplorerDir.Name = "buttonExplorerDir";
             this.buttonExplorerDir.Size = new System.Drawing.Size(88, 33);
@@ -90,17 +95,58 @@
             // comboBoxCommand
             // 
             this.comboBoxCommand.FormattingEnabled = true;
-            this.comboBoxCommand.Location = new System.Drawing.Point(31, 537);
+            this.comboBoxCommand.Location = new System.Drawing.Point(31, 532);
             this.comboBoxCommand.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCommand.Name = "comboBoxCommand";
             this.comboBoxCommand.Size = new System.Drawing.Size(548, 25);
             this.comboBoxCommand.TabIndex = 7;
+            // 
+            // btnCompile
+            // 
+            this.btnCompile.Location = new System.Drawing.Point(588, 110);
+            this.btnCompile.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCompile.Name = "btnCompile";
+            this.btnCompile.Size = new System.Drawing.Size(88, 33);
+            this.btnCompile.TabIndex = 8;
+            this.btnCompile.Text = "生成(&F6)";
+            this.btnCompile.UseVisualStyleBackColor = true;
+            // 
+            // btnCompileCopy
+            // 
+            this.btnCompileCopy.Location = new System.Drawing.Point(588, 151);
+            this.btnCompileCopy.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCompileCopy.Name = "btnCompileCopy";
+            this.btnCompileCopy.Size = new System.Drawing.Size(88, 33);
+            this.btnCompileCopy.TabIndex = 9;
+            this.btnCompileCopy.Text = "生成复制(&F5)";
+            this.btnCompileCopy.UseVisualStyleBackColor = true;
+            // 
+            // txtDevDir
+            // 
+            this.txtDevDir.Location = new System.Drawing.Point(31, 564);
+            this.txtDevDir.Name = "txtDevDir";
+            this.txtDevDir.Size = new System.Drawing.Size(548, 23);
+            this.txtDevDir.TabIndex = 10;
+            // 
+            // btnDevSel
+            // 
+            this.btnDevSel.Location = new System.Drawing.Point(588, 564);
+            this.btnDevSel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDevSel.Name = "btnDevSel";
+            this.btnDevSel.Size = new System.Drawing.Size(88, 23);
+            this.btnDevSel.TabIndex = 11;
+            this.btnDevSel.Text = "选择";
+            this.btnDevSel.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 626);
+            this.Controls.Add(this.btnDevSel);
+            this.Controls.Add(this.txtDevDir);
+            this.Controls.Add(this.btnCompileCopy);
+            this.Controls.Add(this.btnCompile);
             this.Controls.Add(this.comboBoxCommand);
             this.Controls.Add(this.buttonExplorerDir);
             this.Controls.Add(this.listBoxDirRepo);
@@ -127,6 +173,10 @@
         private System.Windows.Forms.ListBox listBoxDirRepo;
         private System.Windows.Forms.Button buttonExplorerDir;
         private System.Windows.Forms.ComboBox comboBoxCommand;
+        private System.Windows.Forms.Button btnCompile;
+        private System.Windows.Forms.Button btnCompileCopy;
+        private System.Windows.Forms.TextBox txtDevDir;
+        private System.Windows.Forms.Button btnDevSel;
     }
 }
 

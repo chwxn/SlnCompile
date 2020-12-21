@@ -25,6 +25,9 @@ namespace SlnCompileCore
             this.FormClosing += Form1_FormClosing;
             this.KeyPreview = true;
             this.KeyDown += Form1_KeyDown;
+            this.btnCompile.Click += BtnCompile_Click;
+            this.btnCompileCopy.Click += BtnCompileCopy_Click;
+            this.btnDevSel.Click += BtnDevSel_Click;
             this.labelInfo.Text = "Info：选择目录，加载该目录下的解决方案，双击解决方案cmd调用devenv编译。";
         }
 
@@ -38,6 +41,7 @@ namespace SlnCompileCore
 
         string _slnPath = AppDomain.CurrentDomain.BaseDirectory + "sln.txt";
         string _cmdPath = AppDomain.CurrentDomain.BaseDirectory + "cmd.txt";
+        string _devPath = AppDomain.CurrentDomain.BaseDirectory + "dev.txt";
         string _baseDir = AppDomain.CurrentDomain.BaseDirectory;
 
         private void Form1_Load(object sender, EventArgs e)
@@ -53,6 +57,7 @@ namespace SlnCompileCore
             {
                 Directory.CreateDirectory(_baseDir);
             }
+            //加载解决方案目录
             if (File.Exists(_slnPath))
             {
 
@@ -69,9 +74,9 @@ namespace SlnCompileCore
                     loadSln(listBoxDirRepo.SelectedItem.ToString());
                 }
             }
+            //加载命令
             if (File.Exists(_cmdPath))
             {
-
                 string[] cmds = File.ReadAllLines(_cmdPath);
                 if (cmds.Length > 0)
                 {
@@ -83,6 +88,15 @@ namespace SlnCompileCore
                     if (_cmdPathRepo.Count > 0)
                         comboBoxCommand.DataSource = _cmdPathRepo;
                     //comboBoxCommand.SelectedIndex = 0;
+                }
+            }
+            //加载开发环境目录
+            if (File.Exists(_devPath))
+            {
+                string devDir = File.ReadAllText(_devPath);
+                if (Directory.Exists(devDir))
+                {
+                    txtDevDir.Text = devDir;
                 }
             }
             _isLoad = true;
@@ -123,6 +137,8 @@ namespace SlnCompileCore
         }
         private void listBoxSlnRepo_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (listBoxSlnRepo.SelectedItem == null)
+                return;
             string path = listBoxSlnRepo.SelectedItem.ToString();
             //string str = textBoxCommand.Text;
             string str = comboBoxCommand.Text;
@@ -134,10 +150,18 @@ namespace SlnCompileCore
                 _cmdPathRepo.Add(str);
                 saveCommand();
             }
-
+            string extCommand = string.Empty;
+            if (_isCopy)
+            {
+                string dir = txtDevDir.Text;
+                if (!string.IsNullOrEmpty(dir))
+                {
+                    extCommand = " && cpext \"" + dir + "\"";
+                }
+            }
             Thread thread = new Thread(new ParameterizedThreadStart(Cmd));
             thread.IsBackground = true;
-            thread.Start("1&" + command);
+            thread.Start("1&" + command + extCommand + " && pause");
         }
         private void listBoxDirRepo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -161,6 +185,47 @@ namespace SlnCompileCore
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
+            }
+            else if (e.KeyCode == Keys.F5)//生成复制
+            {
+                btnCompileCopy.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F6)//生成
+            {
+                btnCompile.PerformClick();
+            }
+        }
+        //生成按钮
+        private void BtnCompile_Click(object sender, EventArgs e)
+        {
+            this.listBoxSlnRepo_MouseDoubleClick(sender, null);
+        }
+        bool _isCopy = false;
+        //生成复制按钮
+        private void BtnCompileCopy_Click(object sender, EventArgs e)
+        {
+            _isCopy = true;
+            this.listBoxSlnRepo_MouseDoubleClick(sender, null);
+            _isCopy = false;
+        }
+        //选择开发环境目录
+        private void BtnDevSel_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDevDir.Text))
+            {
+                folderBrowserDialog1.SelectedPath = txtDevDir.Text;
+            }
+            var dialogResult = folderBrowserDialog1.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                string dir = folderBrowserDialog1.SelectedPath;
+
+                if (!Directory.Exists(dir))
+                {
+                    MessageBox.Show("目录不存在！");
+                    return;
+                }
+                txtDevDir.Text = dir;
             }
         }
 
@@ -186,7 +251,7 @@ namespace SlnCompileCore
                 //sw.Close();
             }
         }
-
+        
         void saveCommand()
         {
             if (!Directory.Exists(_baseDir))
@@ -215,8 +280,13 @@ namespace SlnCompileCore
                 sw.Flush();
                 //sw.Close();
             }
+            string devDir = txtDevDir.Text;
+            if (!string.IsNullOrEmpty(devDir))
+            {
+                File.WriteAllText(_devPath, devDir);
+            }
         }
-
+        //加载解决方案
         void loadSln(string dir)
         {
             if (!Directory.Exists(dir))
@@ -248,7 +318,7 @@ namespace SlnCompileCore
                 using (Process process = new Process())
                 {
                     //指定启动进程是调用的应用程序和命令行参数
-                    ProcessStartInfo psi = new ProcessStartInfo("cmd.exe", " /k " + command);
+                    ProcessStartInfo psi = new ProcessStartInfo("cmd.exe", " /c " + command);
                     process.StartInfo = psi;
                     process.Start();
                     process.WaitForExit();
