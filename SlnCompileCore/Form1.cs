@@ -21,6 +21,7 @@ namespace SlnCompileCore
             this.listBoxSlnRepo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxSlnRepo_MouseDoubleClick);
             this.listBoxDirRepo.SelectedIndexChanged += new System.EventHandler(this.listBoxDirRepo_SelectedIndexChanged);
             this.buttonExplorerDir.Click += new System.EventHandler(this.buttonExplorerDir_Click);
+            this.btnExplorerCur.Click += BtnExplorerCur_Click;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.FormClosing += Form1_FormClosing;
             this.KeyPreview = true;
@@ -135,6 +136,12 @@ namespace SlnCompileCore
                 thread.IsBackground = true;
                 thread.Start("0&explorer \"" + dir + "\"");
             }
+        }
+        private void BtnExplorerCur_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(new ParameterizedThreadStart(Cmd));
+            thread.IsBackground = true;
+            thread.Start("0&explorer \"" + _baseDir + "\"");
         }
         private void listBoxSlnRepo_MouseDoubleClick(object sender, MouseEventArgs e)
         {

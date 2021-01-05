@@ -40,6 +40,7 @@
             this.btnCompileCopy = new System.Windows.Forms.Button();
             this.txtDevDir = new System.Windows.Forms.TextBox();
             this.btnDevSel = new System.Windows.Forms.Button();
+            this.btnExplorerCur = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSelDir
@@ -47,7 +48,7 @@
             this.buttonSelDir.Location = new System.Drawing.Point(588, 12);
             this.buttonSelDir.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSelDir.Name = "buttonSelDir";
-            this.buttonSelDir.Size = new System.Drawing.Size(88, 33);
+            this.buttonSelDir.Size = new System.Drawing.Size(88, 30);
             this.buttonSelDir.TabIndex = 1;
             this.buttonSelDir.Text = "选择";
             this.buttonSelDir.UseVisualStyleBackColor = true;
@@ -84,10 +85,10 @@
             // 
             // buttonExplorerDir
             // 
-            this.buttonExplorerDir.Location = new System.Drawing.Point(588, 53);
+            this.buttonExplorerDir.Location = new System.Drawing.Point(588, 50);
             this.buttonExplorerDir.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExplorerDir.Name = "buttonExplorerDir";
-            this.buttonExplorerDir.Size = new System.Drawing.Size(88, 33);
+            this.buttonExplorerDir.Size = new System.Drawing.Size(88, 30);
             this.buttonExplorerDir.TabIndex = 6;
             this.buttonExplorerDir.Text = "浏览";
             this.buttonExplorerDir.UseVisualStyleBackColor = true;
@@ -106,17 +107,17 @@
             this.btnCompile.Location = new System.Drawing.Point(588, 110);
             this.btnCompile.Margin = new System.Windows.Forms.Padding(4);
             this.btnCompile.Name = "btnCompile";
-            this.btnCompile.Size = new System.Drawing.Size(88, 33);
+            this.btnCompile.Size = new System.Drawing.Size(88, 30);
             this.btnCompile.TabIndex = 8;
             this.btnCompile.Text = "生成(&F6)";
             this.btnCompile.UseVisualStyleBackColor = true;
             // 
             // btnCompileCopy
             // 
-            this.btnCompileCopy.Location = new System.Drawing.Point(588, 151);
+            this.btnCompileCopy.Location = new System.Drawing.Point(588, 148);
             this.btnCompileCopy.Margin = new System.Windows.Forms.Padding(4);
             this.btnCompileCopy.Name = "btnCompileCopy";
-            this.btnCompileCopy.Size = new System.Drawing.Size(88, 33);
+            this.btnCompileCopy.Size = new System.Drawing.Size(88, 30);
             this.btnCompileCopy.TabIndex = 9;
             this.btnCompileCopy.Text = "生成复制(&F5)";
             this.btnCompileCopy.UseVisualStyleBackColor = true;
@@ -133,16 +134,26 @@
             this.btnDevSel.Location = new System.Drawing.Point(588, 564);
             this.btnDevSel.Margin = new System.Windows.Forms.Padding(4);
             this.btnDevSel.Name = "btnDevSel";
-            this.btnDevSel.Size = new System.Drawing.Size(88, 23);
+            this.btnDevSel.Size = new System.Drawing.Size(88, 28);
             this.btnDevSel.TabIndex = 11;
             this.btnDevSel.Text = "选择";
             this.btnDevSel.UseVisualStyleBackColor = true;
+            // 
+            // btnExplorerCur
+            // 
+            this.btnExplorerCur.Location = new System.Drawing.Point(588, 185);
+            this.btnExplorerCur.Name = "btnExplorerCur";
+            this.btnExplorerCur.Size = new System.Drawing.Size(88, 30);
+            this.btnExplorerCur.TabIndex = 12;
+            this.btnExplorerCur.Text = "程序目录";
+            this.btnExplorerCur.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 626);
+            this.Controls.Add(this.btnExplorerCur);
             this.Controls.Add(this.btnDevSel);
             this.Controls.Add(this.txtDevDir);
             this.Controls.Add(this.btnCompileCopy);
@@ -177,6 +188,7 @@
         private System.Windows.Forms.Button btnCompileCopy;
         private System.Windows.Forms.TextBox txtDevDir;
         private System.Windows.Forms.Button btnDevSel;
+        private System.Windows.Forms.Button btnExplorerCur;
     }
 }
 
