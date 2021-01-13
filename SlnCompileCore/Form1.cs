@@ -28,6 +28,7 @@ namespace SlnCompileCore
             this.KeyDown += Form1_KeyDown;
             this.btnCompile.Click += BtnCompile_Click;
             this.btnCompileCopy.Click += BtnCompileCopy_Click;
+            this.btnCopy.Click += BtnCopy_Click;
             this.btnDevSel.Click += BtnDevSel_Click;
             this.labelInfo.Text = "Info：选择目录，加载该目录下的解决方案，双击解决方案cmd调用devenv编译。";
         }
@@ -145,6 +146,11 @@ namespace SlnCompileCore
         }
         private void listBoxSlnRepo_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            CompileCopyDll(CompileCopyEnum.compile);
+        }
+
+        private void CompileCopyDll(CompileCopyEnum compileCopy)
+        {
             if (listBoxSlnRepo.SelectedItem == null)
                 return;
             string path = listBoxSlnRepo.SelectedItem.ToString();
@@ -159,22 +165,36 @@ namespace SlnCompileCore
                 saveCommand();
             }
             string extCommand = string.Empty;
-            if (_isCopy)
+            if (compileCopy==CompileCopyEnum.compileCopy)
             {
                 string dir = txtDevDir.Text;
                 if (!string.IsNullOrEmpty(dir))
                 {
-                    extCommand = " && cpext \"" + dir + "\"";
+                    extCommand = " && cpc \"" + dir + "\"";
                 }
                 else
                 {
-                    extCommand = " && cpext";
+                    extCommand = " && cpc";
                 }
+            }
+            if (compileCopy == CompileCopyEnum.copy)
+            {
+                string dir = txtDevDir.Text;
+                if (!string.IsNullOrEmpty(dir))
+                {
+                    extCommand = " cpc \"" + dir + "\"";
+                }
+                else
+                {
+                    extCommand = " cpc";
+                }
+                command = string.Empty;
             }
             Thread thread = new Thread(new ParameterizedThreadStart(Cmd));
             thread.IsBackground = true;
             thread.Start("1&" + command + extCommand + " & pause");
         }
+
         private void listBoxDirRepo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!_isLoad) return;
@@ -206,19 +226,24 @@ namespace SlnCompileCore
             {
                 btnCompile.PerformClick();
             }
+            else if (e.KeyCode == Keys.F7)//
+            {
+                btnCopy.PerformClick();
+            }
         }
         //生成按钮
         private void BtnCompile_Click(object sender, EventArgs e)
         {
             this.listBoxSlnRepo_MouseDoubleClick(sender, null);
         }
-        bool _isCopy = false;
         //生成复制按钮
         private void BtnCompileCopy_Click(object sender, EventArgs e)
         {
-            _isCopy = true;
-            this.listBoxSlnRepo_MouseDoubleClick(sender, null);
-            _isCopy = false;
+            CompileCopyDll(CompileCopyEnum.compileCopy);
+        }
+        private void BtnCopy_Click(object sender, EventArgs e)
+        {
+            CompileCopyDll(CompileCopyEnum.copy);
         }
         //选择开发环境目录
         private void BtnDevSel_Click(object sender, EventArgs e)
@@ -366,5 +391,11 @@ namespace SlnCompileCore
 
         }
 
+    }
+    public enum CompileCopyEnum
+    {
+        compile=0,
+        copy=1,
+        compileCopy=2
     }
 }

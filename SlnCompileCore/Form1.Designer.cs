@@ -41,6 +41,7 @@
             this.txtDevDir = new System.Windows.Forms.TextBox();
             this.btnDevSel = new System.Windows.Forms.Button();
             this.btnExplorerCur = new System.Windows.Forms.Button();
+            this.btnCopy = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSelDir
@@ -141,18 +142,29 @@
             // 
             // btnExplorerCur
             // 
-            this.btnExplorerCur.Location = new System.Drawing.Point(588, 185);
+            this.btnExplorerCur.Location = new System.Drawing.Point(588, 223);
             this.btnExplorerCur.Name = "btnExplorerCur";
             this.btnExplorerCur.Size = new System.Drawing.Size(88, 30);
             this.btnExplorerCur.TabIndex = 12;
             this.btnExplorerCur.Text = "程序目录";
             this.btnExplorerCur.UseVisualStyleBackColor = true;
             // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(588, 186);
+            this.btnCopy.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(88, 30);
+            this.btnCopy.TabIndex = 13;
+            this.btnCopy.Text = "复制(&F7)";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 626);
+            this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnExplorerCur);
             this.Controls.Add(this.btnDevSel);
             this.Controls.Add(this.txtDevDir);
@@ -189,6 +201,7 @@
         private System.Windows.Forms.TextBox txtDevDir;
         private System.Windows.Forms.Button btnDevSel;
         private System.Windows.Forms.Button btnExplorerCur;
+        private System.Windows.Forms.Button btnCopy;
     }
 }
 
